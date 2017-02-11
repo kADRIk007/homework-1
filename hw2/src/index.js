@@ -92,15 +92,15 @@ function returnBadArguments(fn) {
  Исправьте условие внутри if таким образом, чтобы функция возвращала true
  */
 function findError(data1, data2) {
-	return (function() {
-		for (var i = 0; i < data1.length; i++) {
-			if (data1[i] != data2[i] && !isNaN(data1[i]) && !isNaN(data2[i]) ) {
-				return false;
-			}
-		}
+    return (function() {
+        for (var i = 0; i < data1.length; i++) {
+            if (data1[i] != data2[i] && !isNaN(data1[i]) && !isNaN(data2[i]) ) {
+                return false;
+            }
+        }
 
-		return true;
-	})();
+        return true;
+    })();
 }
 
 /*
@@ -168,9 +168,9 @@ function calculator(number = 0) {
 }
 
 export {
-	isAllTrue,
-	isSomeTrue,
-	returnBadArguments,
-	findError,
-	calculator
+    isAllTrue,
+    isSomeTrue,
+    returnBadArguments,
+    findError,
+    calculator
 };
