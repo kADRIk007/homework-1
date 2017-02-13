@@ -51,7 +51,7 @@ function returnFnResult(fn) {
  При вызове F, переданное число должно быть увеличено на единицу и возвращено из F
  */
 function returnCounter(number = 0) {
-	return function f() {
+return function f() {
 		return ++number;
 	}
 }
@@ -63,13 +63,13 @@ function returnCounter(number = 0) {
  Функция должна привязать переданные аргументы к функции F и вернуть получившуюся функцию
  */
 function bindFunction(fn) {
-	function fn(a, b) {
-		return a + b;
-	}
+    function fn(a, b) {
+        return a + b;
+    }
 
-	var sum2 = fn.bind(null, 10, 20);
+    var sum2 = fn.bind(null, 10, 20);
 
-	return sum2;
+    return sum2;
 }
 
 
