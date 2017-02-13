@@ -52,7 +52,7 @@ function isSomeTrue(array, fn) {
         }
     }
 
-    return true;
+    return false;
 }
 
 /*
