@@ -9,6 +9,7 @@ function forEach(array, fn) {
     for (var i = 0; i < array.length; i++) {
         fn(array[i], i, array)
     }
+
 }
 
 /*
@@ -93,6 +94,7 @@ function getEnumProps(obj) {
  Функция должна перебрать все свойства объекта, преобразовать их имена в верхний регистра и вернуть в виде массива
  */
 function upperProps(obj) {
+  
     var array = [];
 
     for (var prop in obj) {
@@ -107,23 +109,6 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  */
 function slice(array, from, to) {
-
-    if (!from) {
-        0;
-    }
-    if (!to) {
-        to = array.length;
-    }
-
-    var result = [];
-
-
-    for (var i = from; i < to; i++) {
-        result.push(array[i]);
-    }
-
-    return result;
-
 
 }
 
