@@ -32,16 +32,21 @@ function map(array, fn) {
  */
 function reduce(array, fn, initial) {
 
+    var previousValue;
+
     if (initial == undefined) {
         previousValue = array[0];
+        for (var i = 1; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
     } else {
         var previousValue = initial;
+        for (var i = 0; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
     }
 
-
-    for (var i = 0; i < array.length; i++) {
-        previousValue = fn(previousValue, array[i], i, array)
-    }
+return previousValue;
 
 }
 
@@ -102,6 +107,23 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  */
 function slice(array, from, to) {
+
+    if (!from) {
+        0;
+    }
+    if (!to) {
+        to = array.length;
+    }
+
+    var result = [];
+
+
+    for (var i = from; i < to; i++) {
+        result.push(array[i]);
+    }
+
+    return result;
+
 
 }
 
