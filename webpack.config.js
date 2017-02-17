@@ -13,7 +13,7 @@ loaders.push({
 });
 
 module.exports = {
-    entry: './hw4/src/index.js',
+    entry: './src/index.js',
     output: {
         filename: '[hash].js',
         path: './dist'

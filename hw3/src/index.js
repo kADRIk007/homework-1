@@ -52,7 +52,12 @@ function reduce(array, fn, initial) {
  */
 function deleteProperty(obj, prop) {
 
+       if (obj.hasOwnProperty('prop')) {
         delete obj[prop];
+    }
+    
+    return true;
+
 }
 
 /*
@@ -61,7 +66,6 @@ function deleteProperty(obj, prop) {
  Функция должна проверить существует ли укзаанное свойство в указанном объекте
  */
 function hasProperty(obj, prop) {
-
     var a = prop;
 
     if (obj.hasOwnProperty(a)) {
@@ -80,7 +84,6 @@ function getEnumProps(obj) {
     var array = Object.keys(obj);
 
     return array;
-
 }
 
 /*
@@ -88,6 +91,7 @@ function getEnumProps(obj) {
  Функция должна перебрать все свойства объекта, преобразовать их имена в верхний регистра и вернуть в виде массива
  */
 function upperProps(obj) {
+  
     var array = [];
 
     for (var prop in obj) {
@@ -102,7 +106,6 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  */
 function slice(array, from, to) {
-
 }
 
 /*
