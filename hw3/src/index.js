@@ -57,8 +57,12 @@ return previousValue;
  Функция должна удалить указанное свойство из указанного объекта
  */
 function deleteProperty(obj, prop) {
-
+ 
+    if (obj.hasOwnProperty(prop)) {
         delete obj[prop];
+    }
+
+    return true;
 }
 
 /*
