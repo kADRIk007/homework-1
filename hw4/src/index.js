@@ -36,6 +36,10 @@ function createAWithHref(hrefValue) {
  */
 function prepend(what, where) {
 
+    var a = where.firstChild;
+
+    where.insertBefore(what, a)
+
 }
 
 /**
@@ -56,10 +60,10 @@ function findAllPSiblings(where) {
 
     var array = [];
 
-    for (var child of where.children) {
-     if (child.nextSibling.tagName == 'P') {
-         array.push(child);
-     }
+    for (var i = 0; i < where.children.length; i++) {
+        if (where.children[i].nextSibling && where.children[i].nextSibling.tagName == 'P') {
+            array.push(where.children[i]);
+        }
     }
 
     return array;
@@ -97,6 +101,14 @@ function findError(where) {
  * должно быть преобразовано в <div></div><p></p>
  */
 function deleteTextNodes(where) {
+
+    var array = [...where.childNodes];
+
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].nodeType == 3) {
+            where.removeChild(array[i]);
+        }
+    }
 }
 
 /**
@@ -110,6 +122,16 @@ function deleteTextNodes(where) {
  * должно быть преобразовано в <span><div><b></b></div><p></p></span>
  */
 function deleteTextNodesRecursive(where) {
+
+    var array = [...where.childNodes];
+
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].nodeType == 3) {
+            where.removeChild(array[i]);
+        } else if (array[i].hasChildNodes()) {
+            deleteTextNodesRecursive(array[i]);
+        }
+    }
 }
 
 /**
