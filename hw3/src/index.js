@@ -9,6 +9,7 @@ function forEach(array, fn) {
     for (var i = 0; i < array.length; i++) {
         fn(array[i], i, array)
     }
+
 }
 
 /*
@@ -32,16 +33,21 @@ function map(array, fn) {
  */
 function reduce(array, fn, initial) {
 
+    var previousValue;
+
     if (initial == undefined) {
         previousValue = array[0];
+        for (var i = 1; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
     } else {
         var previousValue = initial;
+        for (var i = 0; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
     }
 
-
-    for (var i = 0; i < array.length; i++) {
-        previousValue = fn(previousValue, array[i], i, array)
-    }
+return previousValue;
 
 }
 
@@ -51,13 +57,12 @@ function reduce(array, fn, initial) {
  Функция должна удалить указанное свойство из указанного объекта
  */
 function deleteProperty(obj, prop) {
-
-       if (obj.hasOwnProperty('prop')) {
+ 
+    if (obj.hasOwnProperty(prop)) {
         delete obj[prop];
     }
-    
-    return true;
 
+    return true;
 }
 
 /*
