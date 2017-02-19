@@ -71,7 +71,6 @@ function deleteProperty(obj, prop) {
  Функция должна проверить существует ли укзаанное свойство в указанном объекте
  */
 function hasProperty(obj, prop) {
-
     var a = prop;
 
     if (obj.hasOwnProperty(a)) {
@@ -90,7 +89,6 @@ function getEnumProps(obj) {
     var array = Object.keys(obj);
 
     return array;
-
 }
 
 /*
@@ -113,7 +111,6 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  */
 function slice(array, from, to) {
-
 }
 
 /*
