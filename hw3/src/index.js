@@ -5,6 +5,11 @@
  Напишите аналог встроенного метода forEach для работы с массивами
  */
 function forEach(array, fn) {
+
+    for (var i = 0; i < array.length; i++) {
+        fn(array[i], i, array)
+    }
+
 }
 
 /*
@@ -12,6 +17,14 @@ function forEach(array, fn) {
  Напишите аналог встроенного метода map для работы с массивами
  */
 function map(array, fn) {
+
+    var result = [];
+
+    for (var i = 0; i < array.length; i++) {
+        result.push(fn(array[i], i, array));
+    }
+
+    return result;
 }
 
 /*
@@ -19,6 +32,23 @@ function map(array, fn) {
  Напишите аналог встроенного метода reduce для работы с массивами
  */
 function reduce(array, fn, initial) {
+
+    var previousValue;
+
+    if (initial == undefined) {
+        previousValue = array[0];
+        for (var i = 1; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
+    } else {
+        var previousValue = initial;
+        for (var i = 0; i < array.length; i++) {
+            previousValue = fn(previousValue, array[i], i, array)
+        }
+    }
+
+return previousValue;
+
 }
 
 /*
@@ -27,6 +57,12 @@ function reduce(array, fn, initial) {
  Функция должна удалить указанное свойство из указанного объекта
  */
 function deleteProperty(obj, prop) {
+ 
+    if (obj.hasOwnProperty(prop)) {
+        delete obj[prop];
+    }
+
+    return true;
 }
 
 /*
@@ -35,6 +71,14 @@ function deleteProperty(obj, prop) {
  Функция должна проверить существует ли укзаанное свойство в указанном объекте
  */
 function hasProperty(obj, prop) {
+
+    var a = prop;
+
+    if (obj.hasOwnProperty(a)) {
+        return true;
+    }
+
+    return false;
 }
 
 /*
@@ -42,6 +86,11 @@ function hasProperty(obj, prop) {
  Функция должна получить все перечисляемые свойства объекта и вернуть их в виде массива
  */
 function getEnumProps(obj) {
+
+    var array = Object.keys(obj);
+
+    return array;
+
 }
 
 /*
@@ -49,6 +98,14 @@ function getEnumProps(obj) {
  Функция должна перебрать все свойства объекта, преобразовать их имена в верхний регистра и вернуть в виде массива
  */
 function upperProps(obj) {
+  
+    var array = [];
+
+    for (var prop in obj) {
+        array.push(prop.toUpperCase());
+    }
+
+    return array;
 }
 
 /*
@@ -56,6 +113,7 @@ function upperProps(obj) {
  Напишите аналог встроенного метода slice для работы с массивами
  */
 function slice(array, from, to) {
+
 }
 
 /*
