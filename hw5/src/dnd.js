@@ -25,6 +25,21 @@ let homeworkContainer = document.querySelector('#homework-container');
  * @return {Element}
  */
 function createDiv() {
+
+       var newDiv = document.createElement('DIV');
+
+        newDiv.className = 'draggable-div';
+        newDiv.style.color = '#' + Math.floor(Math.random()*16777215).toString(16);;
+        newDiv.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);;
+        newDiv.style.width = Math.floor(Math.random()*1673) + 'px';
+        newDiv.style.height = Math.floor(Math.random()*1677) + 'px';
+        newDiv.style.position = 'absolute';
+        newDiv.style.zIndex = 1000;
+        newDiv.style.top = Math.floor(Math.random()*1673) + 'px';
+        newDiv.style.left = Math.floor(Math.random()*1673) + 'px';
+
+        return newDiv;
+
 }
 
 /**
@@ -33,6 +48,34 @@ function createDiv() {
  * @param {Element} target
  */
 function addListeners(target) {
+    target.onmousedown = function(e) {
+
+        var coords = target.getBoundingClientRect();
+        var shiftX = e.pageX - coords.left;
+        var shiftY = e.pageY - coords.top;
+
+        moveAt(e);
+
+        function moveAt(e) {
+            target.style.left = e.pageX - shiftX + 'px';
+            target.style.top = e.pageY - shiftY + 'px';
+        }
+
+        document.onmousemove = function(e) {
+            moveAt(e);
+        };
+
+        target.onmouseup = function() {
+            document.onmousemove = null;
+            target.onmouseup = null;
+        };
+
+    };
+
+    target.ondragstart = function() {
+        return false;
+    };
+
 }
 
 let addDivButton = homeworkContainer.querySelector('#addDiv');

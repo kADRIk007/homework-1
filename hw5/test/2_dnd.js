@@ -1,5 +1,5 @@
 import assert from 'assert';
-let template = require('../dnd-content.hbs');
+let template = require('../../dnd-content.hbs');
 
 describe('ДЗ 5.2 - Div D&D', () => {
     let homeworkContainer = document.createElement('div');
