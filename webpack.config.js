@@ -13,10 +13,7 @@ loaders.push({
 });
 
 module.exports = {
-    entry: {
-        main: './hw5/src/index.js',
-        dnd: './hw5/src/dnd.js'
-    },
+    entry: './src/index.js',
     output: {
         filename: '[chunkhash].js',
         path: './dist'
