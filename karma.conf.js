@@ -15,8 +15,8 @@ module.exports = function(config) {
         reporters: ['mocha'],
         port: 9876,
         browsers: ['Firefox'],
-        captureTimeout: 60000,
-        singleRun: true,
+        captureTimeout: 20000,
+        singleRun: false,
         plugins: [
             require('karma-mocha'),
             require('karma-webpack'),
