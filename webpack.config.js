@@ -13,10 +13,7 @@ loaders.push({
 });
 
 module.exports = {
-    entry: {
-        main: './hw6/src/index.js',
-        towns: './hw6/src/towns.js'
-    },
+    entry: './src/index.js',
     output: {
         filename: '[chunkhash].js',
         path: './dist'
