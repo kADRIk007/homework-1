@@ -53,6 +53,11 @@ let listTable = homeworkContainer.querySelector('#list-table tbody');
  * @return {boolean}
  */
 function isMatching(full, chunk) {
+    if (full.toLowerCase().indexOf(chunk.toLowerCase()) !== -1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -62,11 +67,77 @@ function isMatching(full, chunk) {
  * @param value - значение cookie
  */
 function createCookieTr(name, value) {
+    var newCookie = document.cookie = '' + name + '=' + value;
+
+    var tableProp = getCookies();
+
+    for (var propi in tableProp) {
+        listTable.innerHTML += '<tr>' + '<th>' + propi + '</th>' + '<th>' + tableProp[propi] + '</th>' + '<th>' + '<button>' + '</button>' + '</th>' +'</tr>';
+    }
+
 }
 
-filterNameInput.addEventListener('keyup', function() {
+function getCookies() {
+    return document.cookie
+        .split('; ')
+        .filter(Boolean)
+        .map(cookie => cookie.match(/^([^=]+)=(.+)/))
+        .reduce((obj, [, name, value]) => {
+            obj[name] = value;
+
+            return obj;
+        }, {});
+}
+
+listTable.onclick = function(event) {
+
+};
+
+function deleteCookie(name) {
+    document.cookie = '' + name + '=' + ';expires='+new Date(0);
+}
+
+window.addEventListener('load', function () {
+    var tableProp = getCookies();
+
+    for (var propi in tableProp) {
+        listTable.innerHTML += '<tr>' + '<th>' + propi + '</th>' + '<th>' + tableProp[propi] + '</th>' + '<th>' + '<button>' + 'удалить' + '</button>' + '</th>' +'</tr>';
+    }
+});
+
+filterNameInput.addEventListener('keyup', function () {
+    let value = this.value.trim();
+    listTable.innerHTML = '';
+
+    var tableProp = getCookies();
+
+    for (var propi in tableProp) {
+        if (isMatching(propi, value) || isMatching(tableProp[propi], value)) {
+            listTable.innerHTML += '<tr>' + '<th>' + propi + '</th>' + '<th>' + tableProp[propi] + '</th>' + '</tr>';
+        }
+    }
 });
 
 addButton.addEventListener('click', () => {
+    let value1 = addNameInput.value.trim();
+    let value2 = addValueInput.value.trim();
+    listTable.innerHTML = '';
+
+    if (value1 !== '' && value2 !== '') {
+        createCookieTr(value1, value2);
+    }
+
+});
+
+listTable.addEventListener('click', (e) => {
+    var target = e.target;
+
+    if (target.tagName != 'BUTTON') {
+        return;
+    }
+    listTable.innerHTML = '';
+
+    e.target.parentNode.hidden = !e.target.parentNode.hidden;
+
 });
 

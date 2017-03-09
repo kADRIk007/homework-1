@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { createWindow, closeWindow, createCookie, deleteCookie } from '../../src/index';
+import { createWindow, closeWindow, createCookie, deleteCookie } from '../src/index';
 
 function getCookies() {
     return document.cookie
