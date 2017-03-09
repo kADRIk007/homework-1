@@ -13,10 +13,7 @@ loaders.push({
 });
 
 module.exports = {
-    entry: {
-        main: './hw7/src/index.js',
-        cookie: './hw7/src/cookie.js'
-    },
+    entry: './src/index.js',
     output: {
         filename: '[chunkhash].js',
         path: './dist'
