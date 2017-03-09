@@ -36,10 +36,10 @@ module.exports = {
             chunks: ['main']
         }),
         new HtmlPlugin({
-            title: 'Div Drag And Drop',
-            template: 'towns.hbs',
-            filename: 'towns.html',
-            chunks: ['towns']
+            title: 'Cookie editor',
+            template: 'cookie.hbs',
+            filename: 'cookie.html',
+            chunks: ['cookie']
         }),
         new CleanWebpackPlugin(['dist'])
     ]
